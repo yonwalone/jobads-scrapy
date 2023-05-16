@@ -1,0 +1,7 @@
+name: py310-jobads-scrapy
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - scrapy

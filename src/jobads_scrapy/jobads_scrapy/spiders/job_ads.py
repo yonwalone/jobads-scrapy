@@ -1,11 +1,7 @@
 import scrapy
-import os
 import numpy as np
 from config import DATA_PATH
-import subprocess
 
-
-#IDS = np.load(os.path.join(DATA_PATH, "job_ids.npy"))
 
 class JobAdsSpider(scrapy.Spider):
     name = "job_ads"
@@ -18,26 +14,25 @@ class JobAdsSpider(scrapy.Spider):
     def parse(self, response):
         data = {}
 
-        # Extract title, code, entry_type, location, and company
         data["title"] = response.css("h1.margin-bottom-gutter::text").get()
-        data["code"] = response.xpath("/html/body/div[1]/main/div[5]/div/article/div/div[1]/ul/li[1]/span/text()").get()
-        data["entry_type"] = response.xpath("/html/body/div[1]/main/div[5]/div/article/div/div[1]/ul/li[2]/span/text()").get()
-        data["location"] = response.xpath("/html/body/div[1]/main/div[5]/div/article/div/div[1]/ul/li[3]/span/text()").get()
-        data["company"] = response.xpath("/html/body/div[1]/main/div[5]/div/article/div/div[1]/ul/li[4]/span/text()").get()
 
-        # Extract tasks dynamically
+        nested_job_content = response.css("span.jobad-base-info-content::text").getall()
+        data["code"] = nested_job_content[0]
+        data["entry_type"] = nested_job_content[1]
+        data["location"] = nested_job_content[2]
+        data["company"] = nested_job_content[3]
+
         tasks = []
-        task_elements = response.xpath("/html/body/div[1]/main/div[5]/div/article/div/div[2]/div[1]/div[1]/div/div/div/ul/li/span")
-        for element in task_elements:
-            task = element.xpath("text()").get()
+        task_elements = response.xpath('//*[@id="aria-panel-task"]/div/ul/li/span')
+        for task_element in task_elements:
+            task = task_element.xpath("text()").get()
             tasks.append(task)
         data["tasks"] = tasks
 
-        # Extract requirements dynamically
         requirements = []
-        requirement_elements = response.xpath("/html/body/div[1]/main/div[5]/div/article/div/div[2]/div[1]/div[2]/div/div/div/ul/li/span")
-        for element in requirement_elements:
-            requirement = element.xpath("text()").get()
+        requirement_elements = response.xpath('//*[@id="aria-panel-your-profile"]/div/ul/li/span')
+        for requirement_element in requirement_elements:
+            requirement = requirement_element.xpath("text()").get()
             requirements.append(requirement)
         data["requirements"] = requirements
 

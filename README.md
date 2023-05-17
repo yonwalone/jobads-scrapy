@@ -16,10 +16,36 @@
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#credits">Credits</a> •
+  <a href="#credits">Credits</a>
 </p>
 
 ![PDF example](github/jobad_example.png)
+
+## Project structure
+
+```bash
+|-- data
+|-- github
+|-- results
+|-- scripts
+|-- src
+|-- tests
+ -- .gitignore
+ -- config.py
+ -- environment.yml
+ -- README.md
+ -- setup.py
+```
+
+data: Where the raw data of the project is stored.
+
+github: Images for the github repo. (Not relevant for the project)
+
+results: Where the generated PDF results are stored.
+
+scripts: Main script to run the project
+
+src: Reusable Python modules for the project. Can be installed using the setup.py
 
 ## Key Feature
 
@@ -52,6 +78,11 @@ Pip install additional packages that could not be installed using conda.
 ```bash
 pip install jinja2
 pip install pdfkit
+```
+
+Install the src folder as pip package.
+```bash
+pip install -e .
 ```
 
 > **Note**

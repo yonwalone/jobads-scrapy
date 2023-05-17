@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://jobs.porsche.com/index.php?ac=search_result"><img src="/Users/sok1ush/Development/jobads_scrapy/github/spider.png" width="200"></a>
+  <a href="https://jobs.porsche.com/index.php?ac=search_result"><img src="github/spider.png" width="200"></a>
   <br>
   jobads-scrapy
   <br>
@@ -17,8 +17,6 @@
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
-  <a href="#license">License</a>
 </p>
 
 ![PDF example](github/jobad_example.png)

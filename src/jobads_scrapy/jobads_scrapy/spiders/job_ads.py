@@ -1,9 +1,17 @@
 import scrapy
 import numpy as np
-from config import DATA_PATH
 
 
 class JobAdsSpider(scrapy.Spider):
+    """
+    This scrapy spider crawls job ads of the defined urls.
+
+    Args:
+        scrapy.Spider: The base class for the spider.
+
+    Yields:
+        dict: A dictionary containing the extracted job ad data.
+    """
     name = "job_ads"
     allowed_domains = ["jobs.porsche.com"]
 
@@ -12,6 +20,15 @@ class JobAdsSpider(scrapy.Spider):
         self.start_urls =  ['https://jobs.porsche.com/index.php?ac=jobad&id=' + str(item) for item in np.load(inputfile)]
 
     def parse(self, response):
+        """
+        Parses the job ad webpage and extracts relevant information.
+
+        Args:
+            response (scrapy.http.Response): The response object representing the webpage.
+
+        Yields:
+            dict: A dictionary containing the extracted job ad data.
+        """
         data = {}
 
         data["title"] = response.css("h1.margin-bottom-gutter::text").get()

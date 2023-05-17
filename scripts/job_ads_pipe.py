@@ -6,6 +6,14 @@ from src.pdfgen.generate_pdf import JobPdfGenerator
 
 
 if __name__ == "__main__":
+    """
+    Main script for fetching job IDs, scraping job data, and generating PDFs for job ads.
+
+    The script performs the following steps:
+    1. Fetches job IDs by scraping a specified URL and saves them to a NumPy file.
+    2. Scrapes job data using Scrapy based on the fetched job IDs and saves the results to a JSON file.
+    3. Generates PDFs for each job using an HTML template and the scraped job data.
+    """
     print("########### Started fetching jobids ###########")
     id_output_file = os.path.join(DATA_PATH, "job_ids.npy")
     scraper = JobUrlScraper(URL, id_output_file)

@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     print("########### Started scrapy crawl ###########")
     output_file = os.path.join(DATA_PATH, "scraped_jobs.json")
-    command = f"scrapy crawl job_ads -a inputfile={id_output_file} -o {output_file} --nolog"    
+    command = f"scrapy crawl job_ads -a inputfile={id_output_file} -O {output_file} --nolog"    
     try:
         os.chdir(os.path.join(PROJECT_ROOT, "src", "jobads_scrapy"))
         
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     print(f"########### Saved scraped urls in {output_file} ###########")
 
     print("########### Started generating pdfs ###########")
-    template_path = os.path.join(PROJECT_ROOT, "src", "pdfgen")
+    template_path = os.path.join(PROJECT_ROOT, "src", "pdfgen", "jobads")
     job_data_path = os.path.join(output_file)
     pdf_generator = JobPdfGenerator(template_path, job_data_path)
     pdf_generator.load_job_data()

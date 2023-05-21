@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+{% for item in data %}
+  <h2>{{ item.title }}</h2>
+  <p>{{ item.text }}</p>
+  {% endfor %}
+</body>
+</html>

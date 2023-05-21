@@ -78,6 +78,7 @@ Pip install additional packages that could not be installed using conda.
 ```bash
 pip install jinja2
 pip install pdfkit
+pip install scrapy-playwright
 ```
 
 Install the src folder as pip package.
@@ -96,6 +97,7 @@ This software uses the following open source packages:
 - [Scrapy](https://scrapy.org/)
 - [PDFKit](https://pdfkit.org/)
 - [Jinja2](https://jinja.palletsprojects.com/en/2.10.x/)
+- [Playwright for Python](https://github.com/microsoft/playwright-python)
 
 ---
 > GitHub [@yonwalone](https://github.com/yonwalone)
